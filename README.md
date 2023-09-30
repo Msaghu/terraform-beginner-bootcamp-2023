@@ -139,3 +139,27 @@ All future workspaces launched will set the env vars for all bash terminals open
 in their workspaces.
 
 You can also set env vars in the `.gitpod.yml` but this can only contain non-sensitive env vars.
+
+### AWS CLI installation
+
+AWS CLI is installed for this project via the bash script [`./bin/install_aws_cli`](./bin/install_aws_cli)
+
+[Installing the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
+
+### Getting 'WHOAMI' in AWS
+To get the credentials set in the environment, we can run the following in the terminal:
+```sh
+aws sts get-caller-identity
+```
+ If successful, it will return a JSON payload as below;
+```json
+{
+    "UserId": "A]]]]]]]]]]]]]]]]]]",
+    "Account": "919056228998",
+    "Arn": "arn:aws:iam::919056228998:user/terraformbeginner-bootcamp"
+}
+```
+
+In this example, we will generate AWS CLI credentials from the IAM user that we will create purposefully for this bootcamp.
+
+[Setting AWS Environment Variables](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-envvars.html)
