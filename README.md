@@ -163,3 +163,61 @@ aws sts get-caller-identity
 In this example, we will generate AWS CLI credentials from the IAM user that we will create purposefully for this bootcamp.
 
 [Setting AWS Environment Variables](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-envvars.html)
+
+## Terraform Basics 
+
+### Terraform Registry
+
+Terraform sources its providers and modules from the Terraform registry which is
+located at registry. [registry.terraform.io](https://registry.terraform.io/)
+
+- **Provider** is an interface to APIs that will allow us to create resources in Terraform
+- **Modules** are a way to rfactor/make large blocks of Terraform code modular and shareable.
+
+[RandomTerraform Provider](https://registry.terraform.io/providers/hashicorp/random)
+
+### Terraform Console
+
+We can see a full list of terraform commands by typing `terraform` in the terminal.
+
+### Terraform Init
+
+At the start of a new Terraform project, we will run a `terraform init` to download the binaries for the terraform providers that we will use.
+We also will only run `terraform init` when we make major structural changes to the code
+
+### Terraform Plan
+
+`terraform plan`
+This will generate out a change set about the state of our infrastructure and what will be changed. 
+
+We can output the changeset i.e `plan` to be passed to an `apply`, but often, we can just ignore outputting.
+
+### Terraform Apply
+
+`terraform apply`
+This will run a plan and pass the changeset to be executed by Terraform. Apply should prompt us `yes or no`.
+
+To automatically approbve the apply, we can provide the auto-approve flag eg.
+`terraform apply --auto-approve`
+
+### Terraform Lock files
+
+`.terraform.lock.hcl`
+contains the locked versioning for the providers or modules that should be used with this project.
+
+This file **should be committed** to the Version Control System(VSC) of your choice eg. Gitpod in this instance.
+
+### Terraform State files
+
+`.terraform.tfstate`
+contains information about the current state of your infrastructure.
+
+This file **should NOT be committed** to the Version Control System(VSC) of your choice eg. Gitpod in this instance.
+
+This file can contain sensitive data. If this file is lost, we lose the know-how about the current state of the infrastructure. Make sure to always add to `.git.ignore`
+
+`.terraform.tfstate.backup` is the previous state file state.
+
+### Terraform Directory
+
+`.terraform` directory contains binaries of terraform providers.
