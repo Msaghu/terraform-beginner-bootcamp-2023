@@ -230,4 +230,25 @@ This file can contain sensitive data. If this file is lost, we lose the know-how
 
 `.terraform` directory contains binaries of terraform providers.
 
-### Terr
+### Issues with running Terraform Plan
+
+ After successfully running `terraform login` on the first try, I ran `terraform init` then 
+ `terraform plan` which gave the following error:
+
+```sh
+│ Error: No valid credential sources found
+│ 
+│   with provider["registry.terraform.io/hashicorp/aws"],
+│   on main.tf line 22, in provider "aws":
+│   22: provider "aws" {
+│ 
+│ Please see https://registry.terraform.io/providers/hashicorp/aws
+│ for more information about providing credentials.
+│ 
+│ Error: failed to refresh cached credentials, no EC2 IMDS role found,
+│ operation error ec2imds: GetMetadata, request canceled, context deadline
+│ exceeded
+│ 
+╵
+Operation failed: failed running terraform plan (exit 1)
+```
