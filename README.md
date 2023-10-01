@@ -200,6 +200,14 @@ This will run a plan and pass the changeset to be executed by Terraform. Apply s
 To automatically approbve the apply, we can provide the auto-approve flag eg.
 `terraform apply --auto-approve`
 
+### Terraform Destroy
+
+`terraform destroy`
+This destroys resources .
+You can also add the auto-aoorove flag to skip the approve part
+e.g
+`terraform destroy --auto-approve`
+
 ### Terraform Lock files
 
 `.terraform.lock.hcl`
@@ -221,3 +229,5 @@ This file can contain sensitive data. If this file is lost, we lose the know-how
 ### Terraform Directory
 
 `.terraform` directory contains binaries of terraform providers.
+
+### Terr
