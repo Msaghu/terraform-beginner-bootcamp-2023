@@ -252,3 +252,7 @@ This file can contain sensitive data. If this file is lost, we lose the know-how
 ╵
 Operation failed: failed running terraform plan (exit 1)
 ```
+
+### Automated the process using
+
+Automated a workaround using a bash script [/bin/generate_tfrc_credentials](./bin/generate_tfrc_credentials) 
