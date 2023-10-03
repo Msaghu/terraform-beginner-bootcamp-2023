@@ -1,5 +1,15 @@
 # Terraform Beginner Bootcamp 2023
 
+## Table of Contents
+
+- [Semantic Versioning](#Semantic-Versioning)
+- [Install the Terraform CLI](#Install-the-Terraform-CLI)
+    - [Considerations with the Terraform CLI changes
+](#Considerations-with-the-Terraform-CLI-changes
+)
+    - [Refactoring into Bash scripts](#Refactoring-into-Bash-scripts)
+    - []
+
 ## Semantic Versioning :mage:
 
 This project is going to use semantic versioning for its tagging 
@@ -256,3 +266,4 @@ Operation failed: failed running terraform plan (exit 1)
 ### Automated the process using
 
 Automated a workaround using a bash script [/bin/generate_tfrc_credentials](./bin/generate_tfrc_credentials) 
+
