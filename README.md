@@ -8,7 +8,9 @@
 ](#Considerations-with-the-Terraform-CLI-changes
 )
     - [Refactoring into Bash scripts](#Refactoring-into-Bash-scripts)
-    - []
+    - [Considerations for different Linux distributions.](#Considerations-for-different-Linux-distributions.)
+    - [Refactoring into Bash scripts](#Refactoring-into-Bash-scripts)
+    - 
 
 ## Semantic Versioning :mage:
 
