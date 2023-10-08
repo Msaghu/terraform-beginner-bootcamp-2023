@@ -71,6 +71,42 @@ DO: import.tf
 
 When someone deletes/changes cloud resources manually using clickops.
 
+## Fix using Terraform Refresh 
+
+```sh
+terraform apply -refresh-only -auto-approve
+```
+
+## Teraform Modules
+
+### Terraform module structure
+
+It is recommended to place modules in a modules directory when developing modules locally.
+
+### Passing input Variables
+
+We can pass input variables to our module.
+
+The module has to declare these Terrafom variables, in its own variables.tf
+
+```tf
+module "terrahouse_aws" {
+  source = "./modules/terrahouse_aws"
+  user_uuid = var.user_uuid
+  bucket_name = var.bucket_name
+}
+```
+
+### Module Sources
+
+Using the source , we can import the modules from various places e.g locally, Github,Terraform registry.
+
+```tf
+module "terrahouse_aws" {
+  source = "./modules/terrahouse_aws"
+}
+```
+
 ## Errors encountered 
 1. Encountered the following error when running 
 `terraform import aws_s3_bucket.example gnicaf9v3qe7gkqjh3vawd3xkoya8jw8`
