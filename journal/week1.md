@@ -49,4 +49,3 @@ This is the default file to load in terraform variables in bulk
 
 - Do reserach on which terraform variables takes precedence
 
-## Moved from remote to local state
