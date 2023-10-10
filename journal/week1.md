@@ -166,6 +166,48 @@ resource "aws_s3_object" "index_html" {
 
 [Special Path Variable](https://developer.hashicorp.com/terraform/language/expressions/references#filesystem-and-workspace-info)
 
+## Terraform Local Values
+
+Locals allow us to define local variables and can be useful when we need to transform data
+nto another format and have it referenced as a variable.
+
+```tf
+locals {
+    s3_origin_id = "MyS3Origin"
+}
+```
+
+[Terraform Local Values](https://developer.hashicorp.com/terraform/language/values/locals)
+
+## Working with JSON encode
+
+This is used to create the JSON policy in-line in the HCL. 
+
+```tf
+> jsonencode({"hello"="world"})
+{"hello":"world"}
+```
+
+[JSON encode](https://developer.hashicorp.com/terraform/language/functions/jsonencode)
+
+## Terraform data sources
+
+This allows us to source data from cloud resources.
+
+This is useful when we want to reference cloud resources without importing them.
+
+```tf
+data "aws_caller_identity" "current" {}
+
+output "account_id" {
+  value = data.aws_caller_identity.current.account_id
+}
+```
+
+[TerrafromData Sources](https://developer.hashicorp.com/terraform/language/data-sources)
+
+
+
 ## Errors encountered 
 1. Encountered the following error when running 
 `terraform import aws_s3_bucket.example gnicaf9v3qe7gkqjh3vawd3xkoya8jw8`
