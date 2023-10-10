@@ -206,7 +206,21 @@ output "account_id" {
 
 [TerrafromData Sources](https://developer.hashicorp.com/terraform/language/data-sources)
 
+## Changing Resource Lifecycle 
 
+```tf
+variable "content_version" {
+  type        = number
+  description = "Content version number (positive integer starting at 1)"
+```
+
+[Meta Arguments Lifecycles](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle)
+
+## Terraform Data
+
+Plain data values such as Local Values and Input Variables don't have any side-effects to plan against and so they aren't valid in replace_triggered_by. You can use terraform_data's behavior of planning an action each time input changes to indirectly use a plain value to trigger replacement.
+
+[](https://developer.hashicorp.com/terraform/language/resources/terraform-data)
 
 ## Errors encountered 
 1. Encountered the following error when running 
