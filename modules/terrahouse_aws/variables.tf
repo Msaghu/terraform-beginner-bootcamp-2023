@@ -20,3 +20,24 @@ variable "bucket_name" {
     error_message = "The bucket name must be between 3 and 63 characters, start and end with a lowercase letter or number, and can contain only lowercase letters, numbers, hyphens, and dots."
   }
 }
+
+#[Fileexists Teraform function](https://developer.hashicorp.com/terraform/language/functions/fileexists)
+variable "index_html_file_path" {
+  type        = string
+  description = "Path to the index.html file for your static website"
+  
+  validation {
+    condition     = fileexists(var.index_html_file_path)
+    error_message = "The specified index.html file does not exist. Please provide a valid file path."
+  }
+}
+
+variable "error_html_file_path" {
+  type        = string
+  description = "Path to the error.html file for your static website"
+  
+  validation {
+    condition     = fileexists(var.error_html_file_path)
+    error_message = "The specified error.html file does not exist. Please provide a valid file path."
+  }
+}

@@ -107,6 +107,42 @@ module "terrahouse_aws" {
 }
 ```
 
+## Considerations on using ChatGPT to write Teraform
+
+LLMs such as ChtGPT may not be trained on the latest documentation or information about Terraform and may therefore give older examples that may have been deprecated, often affecting providers.
+
+## Working with files in Terraform
+
+### Fileexists Function
+
+This is a built in Teraform function that checks the existence of a file.
+
+```tf
+condition     = fileexists(var.error_html_file_path)
+```
+
+### Filemd5
+
+[Filemd5 Function](https://developer.hashicorp.com/terraform/language/functions/filemd5)
+
+
+### Path Variable
+
+In Terafrom , there is a special variable called path that allows us to reference local paths.
+- path.module = gives the path for the current module
+- path.root = gets the path for the root module
+
+```tf
+resource "aws_s3_object" "index_html" {
+  bucket = aws_s3_bucket.website_bucket.bucket
+  key    = "index.html"
+  source = "${path.root}/public/index.html"
+  etag = filemd5(var.index_html_file_path)
+}
+```
+
+[Special Path Variable](https://developer.hashicorp.com/terraform/language/expressions/references#filesystem-and-workspace-info)
+
 ## Errors encountered 
 1. Encountered the following error when running 
 `terraform import aws_s3_bucket.example gnicaf9v3qe7gkqjh3vawd3xkoya8jw8`
