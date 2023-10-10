@@ -8,6 +8,17 @@ variable "user_uuid" {
   }
 }
 
+variable "content_version" {
+  type        = number
+  description = "Content version number (positive integer starting at 1)"
+
+  validation {
+    condition     = var.content_version > 0 && can(regex("^[1-9][0-9]*$", tostring(var.content_version)))
+    error_message = "Content version must be a positive integer starting at 1."
+  }
+}
+
+
 variable "bucket_name" {
   type        = string
   description = "AWS S3 bucket name"
