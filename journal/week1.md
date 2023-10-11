@@ -222,6 +222,66 @@ Plain data values such as Local Values and Input Variables don't have any side-e
 
 [](https://developer.hashicorp.com/terraform/language/resources/terraform-data)
 
+## Provisioners
+
+Provisioners allow you to execute commands on compute instances e.g aAWS CLI command.
+
+Are not recommended for use by Hashicorp as configuration management tools such as Ansible are a better fit , but the functionality exists.
+
+[Provisioners](https://developer.hashicorp.com/terraform/language/resources/provisioners/syntax)
+
+### Local-exec
+
+This will execute a command on the machine running the Terraform commands eg plan apply.
+
+```tf
+resource "aws_instance" "web" {
+  # ...
+
+  provisioner "local-exec" {
+    command = "echo The server's IP address is ${self.private_ip}"
+  }
+}
+```
+
+[](https://developer.hashicorp.com/terraform/language/resources/provisioners/remote-exec)
+
+
+### Remote-exec
+
+This will execute commands on a machine which you target.  You will need o provide credentials such as SSH to access the machine.
+
+```tf
+data "cloudinit_config" "my_cloud_config" {
+  gzip          = false
+  base64_encode = false
+
+  part {
+    content_type = "text/cloud-config"
+    filename     = "cloud.conf"
+    content = yamlencode(
+      {
+        "write_files" : [
+          {
+            "path" : "/etc/foo.conf",
+            "content" : "foo contents",
+          },
+          {
+            "path" : "/etc/bar.conf",
+            "content" : file("bar.conf"),
+          },
+          {
+            "path" : "/etc/baz.conf",
+            "content" : templatefile("baz.tpl.conf", { SOME_VAR = "qux" }),
+          },
+        ],
+      }
+    )
+  }
+}
+```
+
+
 ## Errors encountered 
 1. Encountered the following error when running 
 `terraform import aws_s3_bucket.example gnicaf9v3qe7gkqjh3vawd3xkoya8jw8`
