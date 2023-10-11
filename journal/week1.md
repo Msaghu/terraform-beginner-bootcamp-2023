@@ -281,6 +281,17 @@ data "cloudinit_config" "my_cloud_config" {
 }
 ```
 
+## For-each expressions
+
+For each allows us to enumerate over complex data types.
+
+This is mostly useful when creating multiples of a cloud resources and want to reduce amount of repetitive code.
+
+```tf
+[for s in var.list : upper(s)]
+```
+
+[For each expressions](https://developer.hashicorp.com/terraform/language/meta-arguments/for_each)
 
 ## Errors encountered 
 1. Encountered the following error when running 

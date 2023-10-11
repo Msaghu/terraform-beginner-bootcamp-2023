@@ -52,3 +52,9 @@ variable "error_html_file_path" {
     error_message = "The specified error.html file does not exist. Please provide a valid file path."
   }
 }
+
+variable "assets_path" {
+  description = "Path to assets folder"
+  type = string 
+  
+}
