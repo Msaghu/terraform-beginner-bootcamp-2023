@@ -6,7 +6,7 @@ resource "aws_s3_bucket" "website_bucket" {
   bucket = var.bucket_name
   tags = {
     UserUuid    = var.user_uuid
-    Hello = "world"
+    Hello = "Mercury"
   }
 }  
 
@@ -30,19 +30,21 @@ provider "aws" {
 resource "aws_s3_object" "index_html" {
   bucket = aws_s3_bucket.website_bucket.bucket
   key    = "index.html"
-  source = var.index_html_file_path
+  source = "${path.root}${var.index_html_file_path}"
   content_type = "text/html"
 
-  etag = filemd5(var.index_html_file_path)
+  etag = filemd5("${path.root}${var.index_html_file_path}"
+)
 }
 
 resource "aws_s3_object" "error_html" {
   bucket = aws_s3_bucket.website_bucket.bucket
   key    = "error.html"
-  source = var.error_html_file_path
+  source = "${path.root}${var.error_html_file_path}"
+
   content_type = "text/html"
   
-  etag = filemd5(var.error_html_file_path)
+  etag = filemd5("${path.root}${var.error_html_file_path}")
 }
 
 #Creating a bucket policy for the S3 bucket
