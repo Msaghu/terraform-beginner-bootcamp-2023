@@ -21,23 +21,23 @@ variable "bucket_name" {
   }
 }
 
-#[Fileexists Teraform function](https://developer.hashicorp.com/terraform/language/functions/fileexists)
-variable "index_html_file_path" {
-  type        = string
-  description = "Path to the index.html file for your static website"
+# #[Fileexists Teraform function](https://developer.hashicorp.com/terraform/language/functions/fileexists)
+# variable "index_html_file_path" {
+#   type        = string
+#   description = "Path to the index.html file for your static website"
   
-  validation {
-    condition     = fileexists(var.index_html_file_path)
-    error_message = "The specified index.html file does not exist. Please provide a valid file path."
-  }
-}
+#   validation {
+#     condition     = fileexists(var.index_html_file_path)
+#     error_message = "The specified index.html file does not exist. Please provide a valid file path."
+#   }
+# }
 
-variable "error_html_file_path" {
-  type        = string
-  description = "Path to the error.html file for your static website"
+# variable "error_html_file_path" {
+#   type        = string
+#   description = "Path to the error.html file for your static website"
   
-  validation {
-    condition     = fileexists(var.error_html_file_path)
-    error_message = "The specified error.html file does not exist. Please provide a valid file path."
-  }
-}
+#   validation {
+#     condition     = fileexists(var.error_html_file_path)
+#     error_message = "The specified error.html file does not exist. Please provide a valid file path."
+#   }
+# }
